@@ -12,13 +12,15 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start"
+		"start": "wp-scripts start",
+		"prettier": "prettier --write ."
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^27.4.0"
 	},
 	"dependencies": {
 		"@wordpress/block-editor": "^12.21.0",
+		"prettier": "^3.2.5",
 		"react-icons": "^5.0.1"
 	}
 }

@@ -5,15 +5,14 @@
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./style.scss";
+import './style.scss';
 
 /**
  * Internal dependencies
  */
-import Edit from "./edit";
-import save from "./save";
-import metadata from "./block.json";
-
+import Edit from './edit';
+import save from './save';
+import metadata from './block.json';
 
 /**
  * Every block starts by registering a new block type definition.
@@ -32,16 +31,14 @@ import metadata from "./block.json";
 // 	save,
 // } );
 
-import {
-	registerFormatType,
-} from "@wordpress/rich-text";
-import { __ } from "@wordpress/i18n";
-import AiGenerateButton from "./AiGenerateButton";
-import CONSTS from "./constants";
+import {registerFormatType} from '@wordpress/rich-text';
+import {__} from '@wordpress/i18n';
+import AiGenerateButton from './AiGenerateButton';
+import CONSTS from './constants';
 
 registerFormatType(CONSTS.FORMAT_TYPE, {
-	title: __("AI Assistant", "ai-assistant"),
-	tagName: "span",
-	className: "ksn-ai-assistant",
+	title: __('AI Assistant', 'ai-assistant'),
+	tagName: 'span',
+	className: 'ksn-ai-assistant',
 	edit: AiGenerateButton,
 });

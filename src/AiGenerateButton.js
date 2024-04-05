@@ -1,17 +1,17 @@
-import { Fragment } from "@wordpress/element";
-import { GiMagickTrick } from "react-icons/gi";
-import PromptPopover from "./PromptPopover";
-import { BlockControls, RichTextShortcut } from "@wordpress/block-editor";
-import { toggleFormat, useAnchorRef } from "@wordpress/rich-text";
-import { ToolbarGroup, ToolbarButton } from "@wordpress/components";
-import { __ } from "@wordpress/i18n";
-import CONSTS from "./constants";
+import {Fragment} from '@wordpress/element';
+import {GiMagickTrick} from 'react-icons/gi';
+import PromptPopover from './PromptPopover';
+import {BlockControls, RichTextShortcut} from '@wordpress/block-editor';
+import {toggleFormat, useAnchorRef} from '@wordpress/rich-text';
+import {ToolbarGroup, ToolbarButton} from '@wordpress/components';
+import {__} from '@wordpress/i18n';
+import CONSTS from './constants';
 
 let anchorRange;
 let anchorRect;
 
-const AiGenerateButton = ({ isActive, value, onChange, contentRef }) => {
-	const anchorRef = useAnchorRef({ ref: contentRef, value });
+const AiGenerateButton = ({isActive, value, onChange, contentRef, ...props}) => {
+	const anchorRef = useAnchorRef({ref: contentRef, value});
 
 	const onToggle = () => {
 		// Set up the anchorRange when the Popover is opened.
@@ -20,21 +20,24 @@ const AiGenerateButton = ({ isActive, value, onChange, contentRef }) => {
 		anchorRange = selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
 
 		// Pin the Popover to the caret position.
-		const boundingClientRect = anchorRange
-			? anchorRange.getBoundingClientRect()
-			: null;
+		const boundingClientRect = anchorRange ? anchorRange.getBoundingClientRect() : null;
 
 		anchorRect = anchorRange ? () => boundingClientRect : null;
-		onChange(toggleFormat(value, { type: CONSTS.FORMAT_TYPE }));
+		onChange(toggleFormat(value, {type: CONSTS.FORMAT_TYPE}));
+	};
+
+	const onGenerate = () => {
+		console.log('CLICKING GENERATE --', props);
 	};
 
 	const thePopover = isActive && (
 		<PromptPopover
 			onClose={() => {
-				onChange(toggleFormat(value, { type: CONSTS.FORMAT_TYPE  }));
+				onChange(toggleFormat(value, {type: CONSTS.FORMAT_TYPE}));
 			}}
 			anchor={anchorRef}
 			// getAnchorRect={anchorRect}
+			onGenerate={onGenerate}
 		></PromptPopover>
 	);
 	return (
@@ -44,10 +47,10 @@ const AiGenerateButton = ({ isActive, value, onChange, contentRef }) => {
 					<ToolbarButton
 						// icon="editor-underline"
 						icon={<GiMagickTrick />}
-						title={__("AI Assistant", "ai-assistant")}
+						title={__('AI Assistant', 'ai-assistant')}
 						onClick={() => {
 							onToggle();
-							console.log("Text --- ", value.text);
+							console.log('Text --- ', value.text);
 						}}
 						isActive={isActive}
 					/>

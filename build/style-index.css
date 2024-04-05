@@ -41,7 +41,7 @@
 .block-editor-genai__generate-button-container {
   position: absolute;
   right: 3px;
-  top: 3px;
+  top: 5px;
 }
 
 .block-editor-genai__generate-button {
@@ -50,6 +50,11 @@
   min-width: 36px;
   border: 0;
   background: none;
+}
+
+.block-editor-genai__generate-button:hover {
+  color: var(--wp-admin-theme-color);
+  cursor: pointer;
 }
 
 .block-editor-genai__prompt-wrapper {

@@ -21,5 +21,5 @@
  */
 
 /* eslint-disable no-console */
-console.log( 'Hello World! (from create-block-block-editor-genai block)' );
+console.log('Hello World! (from create-block-block-editor-genai block)');
 /* eslint-enable no-console */
