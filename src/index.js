@@ -33,83 +33,13 @@ import metadata from "./block.json";
 // } );
 
 import {
-	RichTextToolbarButton,
-	BlockControls,
-	RichTextShortcut,
-} from "@wordpress/block-editor";
-import {
 	registerFormatType,
-	toggleFormat,
-	useAnchorRef,
 } from "@wordpress/rich-text";
 import { __ } from "@wordpress/i18n";
-import { ToolbarGroup, ToolbarButton, Popover } from "@wordpress/components";
-import { tip, lifesaver } from "@wordpress/icons";
-import { Fragment } from "@wordpress/element";
-import { GiMagickTrick } from "react-icons/gi";
-import PromptPopover from "./PromptPopover";
+import AiGenerateButton from "./AiGenerateButton";
+import CONSTS from "./constants";
 
-const type = "ksn/ai-assistant";
-let anchorRange;
-let anchorRect;
-
-const AiGenerateButton = ({ isActive, value, onChange, contentRef }) => {
-	const anchorRef = useAnchorRef({ ref: contentRef, value });
-
-	const onToggle = () => {
-		// Set up the anchorRange when the Popover is opened.
-		const selection = document.defaultView.getSelection();
-
-		anchorRange = selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
-
-		// Pin the Popover to the caret position.
-		const boundingClientRect = anchorRange
-			? anchorRange.getBoundingClientRect()
-			: null;
-
-		anchorRect = anchorRange ? () => boundingClientRect : null;
-		onChange(toggleFormat(value, { type }));
-	};
-
-	const thePopover = isActive && (
-		<PromptPopover
-			onClose={() => {
-				onChange(toggleFormat(value, { type }));
-			}}
-			anchorRef={anchorRef}
-			// getAnchorRect={anchorRect}
-		>
-		</PromptPopover>
-	);
-	return (
-		<Fragment>
-			<BlockControls>
-				<ToolbarGroup>
-					<ToolbarButton
-						// icon="editor-underline"
-						icon={<GiMagickTrick />}
-						title={__("AI Assistant", "ai-assistant")}
-						onClick={() => {
-							onToggle();
-							console.log("Text --- ", value.text);
-						}}
-						isActive={isActive}
-					/>
-				</ToolbarGroup>
-			</BlockControls>
-			<Fragment>
-				<RichTextShortcut
-					type="primary"
-					onUse={onToggle}
-					contentRef={contentRef}
-				/>
-			</Fragment>
-			{thePopover}
-		</Fragment>
-	);
-};
-
-registerFormatType(type, {
+registerFormatType(CONSTS.FORMAT_TYPE, {
 	title: __("AI Assistant", "ai-assistant"),
 	tagName: "span",
 	className: "ksn-ai-assistant",
