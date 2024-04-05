@@ -14,7 +14,6 @@ const PromptPopover = ({ ...props }) => {
 			expandOnMobile={true}
 			headerTitle={__("Prompt", "block-editor-genai__prompt")}
             {...props}
-			// getAnchorRect={anchorRect}
 		>
 			<div className="block-editor-genai__prompt-container">
 				<div className="block-editor-genai__prompt-wrapper">

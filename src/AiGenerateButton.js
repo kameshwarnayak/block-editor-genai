@@ -33,7 +33,7 @@ const AiGenerateButton = ({ isActive, value, onChange, contentRef }) => {
 			onClose={() => {
 				onChange(toggleFormat(value, { type: CONSTS.FORMAT_TYPE  }));
 			}}
-			anchorRef={anchorRef}
+			anchor={anchorRef}
 			// getAnchorRect={anchorRect}
 		></PromptPopover>
 	);
