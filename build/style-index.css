@@ -1,0 +1,59 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-create-block-block-editor-genai {
+  background-color: #21759b;
+  color: #fff;
+  padding: 2px;
+}
+
+.block-editor-genai__prompt-container {
+  margin: 16px;
+}
+
+.block-editor-genai__prompt-input {
+  border: 1px solid #949494;
+  border-radius: 2px;
+  box-shadow: 0 0 0 transparent;
+  display: block;
+  font-size: 13px;
+  line-height: normal;
+  height: 40px;
+  margin: 0;
+  padding: 8px 16px;
+  position: relative;
+  transition: box-shadow 0.1s linear;
+  width: 300px;
+}
+
+.block-editor-genai__prompt-input:focus {
+  border-color: var(--wp-admin-theme-color);
+  box-shadow: 0 0 0 0.5px var(--wp-admin-theme-color);
+  outline: 2px solid transparent;
+}
+
+.block-editor-genai__generate-button-container {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+}
+
+.block-editor-genai__generate-button {
+  padding: 3px;
+  justify-content: center;
+  min-width: 36px;
+  border: 0;
+  background: none;
+}
+
+.block-editor-genai__prompt-wrapper {
+  position: relative;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
