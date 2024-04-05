@@ -46,8 +46,8 @@ import { __ } from "@wordpress/i18n";
 import { ToolbarGroup, ToolbarButton, Popover } from "@wordpress/components";
 import { tip, lifesaver } from "@wordpress/icons";
 import { Fragment } from "@wordpress/element";
-import { PiMagicWandLight } from "react-icons/pi";
 import { GiMagickTrick } from "react-icons/gi";
+import PromptPopover from "./PromptPopover";
 
 const type = "ksn/ai-assistant";
 let anchorRange;
@@ -72,32 +72,14 @@ const AiGenerateButton = ({ isActive, value, onChange, contentRef }) => {
 	};
 
 	const thePopover = isActive && (
-		<Popover
-			placement="bottom-start"
-			focusOnMount="firstElement"
-			key="my-popover"
-			expandOnMobile={true}
-			headerTitle={__("Prompt", "block-editor-genai__prompt")}
+		<PromptPopover
 			onClose={() => {
 				onChange(toggleFormat(value, { type }));
 			}}
 			anchorRef={anchorRef}
 			// getAnchorRect={anchorRect}
 		>
-			<div className="block-editor-genai__prompt-container">
-				<div className="block-editor-genai__prompt-wrapper">
-					<input
-						className="block-editor-genai__prompt-input"
-						placeholder="What would you like to generate?"
-					></input>
-					<div className="block-editor-genai__generate-button-container">
-						<button className="block-editor-genai__generate-button">
-							<PiMagicWandLight size="24" />
-						</button>
-					</div>
-				</div>
-			</div>
-		</Popover>
+		</PromptPopover>
 	);
 	return (
 		<Fragment>
